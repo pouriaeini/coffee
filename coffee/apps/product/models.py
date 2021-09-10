@@ -18,10 +18,6 @@ class Option(models.Model):
 
 
 class Product(models.Model):
-    SMALL_SIZE = "S"
-    MEDIUM_SIZE = "M"
-    LARGE_SIZE = "L"
-    SIZE_CHOICES = [(SMALL_SIZE, "Small"), (MEDIUM_SIZE, 'Medium'), (LARGE_SIZE, "Large")]
     title = models.CharField(verbose_name=_("Title"), max_length=32, null=False, blank=False)
     price = models.FloatField(verbose_name=_("Price"), null=False, blank=False)
     options = models.ManyToManyField(verbose_name=_("Options"), related_name='products', to=Option)
