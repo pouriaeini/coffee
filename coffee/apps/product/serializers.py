@@ -8,9 +8,21 @@ class OptionSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ProductSerializer(serializers.ModelSerializer):
+class ProductListSerializer(serializers.ModelSerializer):
     options = OptionSerializer(many=True)
 
     class Meta:
         model = Product
-        fields = ['pk', 'title', 'price', 'options']
+        fields = ['id', 'title', 'price', 'options']
+
+
+class ProductSerializer(serializers.Serializer):
+    pk = serializers.IntegerField()
+    option = serializers.CharField()
+    # TODO check option is valid for id
+
+    def update(self, instance, validated_data):
+        raise NotImplementedError
+
+    def create(self, validated_data):
+        raise NotImplementedError

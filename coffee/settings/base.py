@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'rest_framework',
     'coffee.apps.product',
+    'coffee.apps.order',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,19 @@ STATIC_URL = get_env("STATIC_URL", '/static/')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = get_env("EMAIL_HOST", 'smtp.gmail.com')
+EMAIL_USE_TLS = get_env("EMAIL_USE_TLS", "True") == "True"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = get_env("EMAIL_HOST_USER", "pooria.eini@gmail.com")
+EMAIL_HOST_PASSWORD = get_env("EMAIL_HOST_PASSWORD", "Iexpress15105091")
+
+# Celery
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

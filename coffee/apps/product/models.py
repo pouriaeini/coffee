@@ -2,6 +2,14 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from django_better_admin_arrayfield.models.fields import ArrayField
 
+OPTION_JSON_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "title": {"type": "string"},
+        "choices": {"type": "array"},
+    }
+}
+
 
 class Option(models.Model):
     title = models.CharField(_("Title"), max_length=32, null=False, blank=False)
@@ -15,6 +23,17 @@ class Option(models.Model):
 
     def __str__(self):
         return "{0}  ({1})".format(self.title, ','.join(self.choices))
+
+
+PRODUCT_JSON_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "pk": {"type": "number"},
+        "title": {"type": "string"},
+        "price": {"type": "number"},
+        "options": {"type": "array", "items": OPTION_JSON_SCHEMA}
+    },
+}
 
 
 class Product(models.Model):

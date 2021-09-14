@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.urls import path, include
 from coffee.apps.product import urls as product_url
+from coffee.apps.order import urls as order_url
 
 urlpatterns = [
-    path('api/menu', include(product_url)),
+    path('api/menu/', include(product_url)),
+    path('api/order/', include(order_url))
 ]
