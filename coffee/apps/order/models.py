@@ -1,10 +1,8 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-# from django.contrib.postgres.fields import ArrayField
 from django_better_admin_arrayfield.models.fields import ArrayField
-from coffee.utils.validator import JSONSchemaValidator
 
-from coffee.apps.product.models import Product, PRODUCT_JSON_SCHEMA
+from coffee.apps.product.models import Product
 
 
 class Order(models.Model):

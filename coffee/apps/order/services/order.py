@@ -6,15 +6,6 @@ from ..models import Order
 
 
 class OrderServices:
-    def __init__(self, first_name, last_name, email, phone_number, products):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.email = email
-        self.phone_number = phone_number
-        self.products = products
-        self.product_list = []
-        self.product_queryset = ProductServices.PRODUCT_OBJ_NONE_VALUE
-        self.price = 0
 
     @classmethod
     def new_order(cls, first_name, last_name, email, phone_number, products):

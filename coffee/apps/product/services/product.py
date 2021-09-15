@@ -27,7 +27,3 @@ class ProductServices:
                     raise OptionException
         return products
 
-    @staticmethod
-    def get_serialized_product(product_queryset):
-        product_list = ProductListSerializer(product_queryset, many=True)
-        return product_list.data
